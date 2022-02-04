@@ -2,4 +2,5 @@
 
 export("%>%")
 export(gen_3kpk_excels)
+export(prep_3kpk_scores)
 importFrom(magrittr,"%>%")
