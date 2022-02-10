@@ -1,5 +1,5 @@
 Package: deceTools
-Title: What the Package Does (One Line, Title Case)
+Title: Internal DECE tools to make life easier :) 
 Version: 0.0.0.9000
 Authors@R: 
     person(given = "Cory", family = "Piat", , "cpilat97@gmai.com", role = c("aut", "cre"),
