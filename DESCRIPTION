@@ -17,4 +17,5 @@ Imports:
     openxlsx,
     rlang,
     stringr,
-    tibble
+    tibble,
+    readr
