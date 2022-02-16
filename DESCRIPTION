@@ -1,6 +1,6 @@
 Package: deceTools
 Title: Internal DECE tools to make life easier :) 
-Version: 0.0.0.9000
+Version: 0.0.0.9001
 Authors@R: 
     person(given = "Cory", family = "Piat", , "cpilat97@gmai.com", role = c("aut", "cre"),
            comment = c(ORCID = "YOUR-ORCID-ID"))
