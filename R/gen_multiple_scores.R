@@ -9,7 +9,7 @@
 #'
 #' @examples
 gen_multiple_scores = function(list_of_scores, template, path) {
-  if (!is.list(list_of_scores)) {
+  if (is.data.frame(list_of_scores)) {
     stop(paste0("Expecting list: " , list_of_scores, "is", typeof(list_of_scores)))
   } else if (is.list(list_of_scores)) {
     purrr::map(list_of_scores, ~ deceTools::generate_passport_exports(.x, template, path))
