@@ -1,10 +1,10 @@
 #' Get 3KPK 1395 RFP ReadScores ready prepared for push into fse files
 #'
-#' @param df_read
-#' @param df_interview
+#' @param df_read ReadScore export from VSET backend
+#' @param df_interview Interview score exports from vset backend
 #'
 #'
-#' @return a gropued list broken out by evaluator and proposal id
+#' @return a grouped list broken out by evaluator and proposal id
 #' @export
 #'
 #' @examples

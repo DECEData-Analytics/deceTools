@@ -18,4 +18,5 @@ Imports:
     rlang,
     stringr,
     tibble,
-    readr
+    readr, 
+    purrr

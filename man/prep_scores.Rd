@@ -7,10 +7,12 @@
 prep_scores(df_read, df_interview)
 }
 \arguments{
-\item{df_interview}{}
+\item{df_read}{ReadScore export from VSET backend}
+
+\item{df_interview}{Interview score exports from vset backend}
 }
 \value{
-a gropued list broken out by evaluator and proposal id
+a grouped list broken out by evaluator and proposal id
 }
 \description{
 Get 3KPK 1395 RFP ReadScores ready prepared for push into fse files

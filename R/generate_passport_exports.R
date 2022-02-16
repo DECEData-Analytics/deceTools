@@ -34,7 +34,7 @@ generate_passport_exports <- function(df, template, file_path_to_save) {
     q11 <- df[[21]]
     q12 <- df[[22]]
     comments <- df[[23]]
-    blank_comment <- tibble::tibble(x = 1:26) %>% dplyr::mutate_at('x', as.character) %>% dplyr::mutate_at('x', ~ str_replace_all(., '\\d+', " "))
+    blank_comment <- tibble::tibble(x = 1:26) %>% dplyr::mutate_at('x', as.character) %>% dplyr::mutate_at('x', ~ stringr::str_replace_all(., '\\d+', " "))
 
     wk <- openxlsx::copyWorkbook(template)
 
