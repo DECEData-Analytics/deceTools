@@ -27,7 +27,7 @@ prep_charter_scores = function(df) {
          evaluator = users$Name[match(Evaluator_fk, users$Id)],
          user_proposal = stringr::str_c(evaluator, Proposal_fk, sep = "_")
   ) %>%
-   dplyr::mutate(dplyr::across(tidyselect::where(is.character), ~ str_replace_all(., ", NA", "")),
+   dplyr::mutate(dplyr::across(where(is.character), ~ str_replace_all(., ", NA", "")),
          user_proposal = str_replace_all(user_proposal, "\\s", "_")) %>%
    dplyr::select(., c(user_proposal, evaluator, proposal = Proposal_fk, dplyr::contains("interview_"), dplyr::contains("comment_")))
 
