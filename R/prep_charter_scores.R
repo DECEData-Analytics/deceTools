@@ -7,7 +7,7 @@
 #'
 #' @examples
 prep_charter_scores = function(df) {
-  if (exists('lic_strength') & exists('lic_growth') & exists('users')) {
+  if (exists('charter_lic_strength') & exists('charter_lic_growth') & exists('users')) {
 
  x <- df %>%
   dplyr::mutate(dplyr::across(dplyr::contains('lic_strength'), ~ charter_lic_strength$strength_statements[match(., charter_lic_strength$Id)]),
@@ -33,6 +33,8 @@ prep_charter_scores = function(df) {
 
  return(x)
 
+  } else {
+    errorCondition("Missing one of the required datasets")
   }
 
 }
