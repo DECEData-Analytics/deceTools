@@ -20,4 +20,6 @@ Imports:
     tibble,
     readr, 
     purrr, 
-    tidyselect
+    tidyselect, 
+    googlesheets4, 
+    googledrive
