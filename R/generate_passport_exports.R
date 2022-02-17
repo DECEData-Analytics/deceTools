@@ -1,8 +1,9 @@
 #' Generates excel file outputs for upload into passport for the 3kpk 1395 rfp
 #'
 #' @param df which dataset/readscores to use
-#' @param template which excel template/export from passport to use
 #' @param file_path_to_save where do you want the files saved. Character file path
+#' @param excel_template_3kpk
+#' @param excel_template_COL
 #'
 #' @return saves filled workbook to whichever directory you choose
 #' @export
@@ -10,7 +11,7 @@
 #' @examples
 #'
 #'
-generate_passport_exports <- function(df, template, file_path_to_save) {
+generate_passport_exports <- function(df, excel_template_3kpk = NULL, excel_template_COL = NULL, file_path_to_save) {
 
   if (is.na(df$rfp_type)) {
     errorCondition(message = "rfp_type is missing")
@@ -36,7 +37,7 @@ generate_passport_exports <- function(df, template, file_path_to_save) {
     comments <- df[[23]]
     blank_comment <- tibble::tibble(x = 1:26) %>% dplyr::mutate_at('x', as.character) %>% dplyr::mutate_at('x', ~ stringr::str_replace_all(., '\\d+', " "))
 
-    wk <- openxlsx::copyWorkbook(template)
+    wk <- openxlsx::copyWorkbook(excel_template_3kpk)
 
     openxlsx::writeData(wk, 'Scored Narrative Program Vision', x = q1, xy = c(5,3))
     openxlsx::writeData(wk, 'Scored Narrative Program Vision', x = q2, xy = c(5,5))
@@ -90,7 +91,7 @@ generate_passport_exports <- function(df, template, file_path_to_save) {
     comments <- df[[23]]
     blank_comment <- tibble::tibble(x = 1:26) %>% dplyr::mutate_at('x', as.character) %>% dplyr::mutate_at('x', ~ str_replace_all(., '\\d+', " "))
 
-    wk <- openxlsx::copyWorkbook(template)
+    wk <- openxlsx::copyWorkbook(excel_template_COL)
 
     openxlsx::writeData(wk, 'Scored Narrative Program Vision', x = q1a, xy = c(5,3))
     openxlsx::writeData(wk, 'Scored Narrative Program Vision', x = q1b, xy = c(5,4))
