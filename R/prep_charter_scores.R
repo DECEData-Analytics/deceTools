@@ -31,6 +31,10 @@ prep_charter_scores = function(df) {
          user_proposal = str_replace_all(user_proposal, "\\s", "_")) %>%
    dplyr::select(., c(user_proposal, evaluator, proposal = Proposal_fk, dplyr::contains("interview_"), dplyr::contains("comment_")))
 
+ charter_scores_table <<- x
+
+ x <- dplyr::group_split(x, user_proposal)
+
  return(x)
 
   } else {
