@@ -2,7 +2,9 @@ prep_scores_test = function(df_read, df_interview) {
   if (exists('strength_comments') & exists('growth_comments') & exists('users') & exists('proposal_info')) {
 
     x <- dplyr::left_join(df_read, df_interview, by = c("Id" = "rs_fk"), na_matches = "never") %>%
-      dplyr::filter(., Proposal_fk.x %in% ready_for_fse) %>%
+      dplyr::left_join(., dplyr::select(coversheet, ProposalID, CompetitionPool), by = c("Proposal_fk.x" = "ProposalID"), na_matches = "never") %>%
+      dplyr::mutate(user_comp_pool_join = str_c(CompetitionPool, Evaluator_fk.x, sep = '_')) %>%
+      dplyr::filter(., Proposal_fk.x %in% ready_for_fse, user_comp_pool_join %notin% alternates) %>%
       dplyr::mutate(dplyr::across(where(is.numeric), ~ dplyr::if_else(is.na(.), 0, .))) %>%
       dplyr::mutate(.,
                     final_pgm_vision = sv_ProgramVision_1,
@@ -30,12 +32,20 @@ prep_scores_test = function(df_read, df_interview) {
                                                round(rowSums(dplyr::select(., final_col_1a:OrgCultureCommunity_12), na.rm = TRUE) / 85 * 5, digits = 2)))
 
 
-    final_scores_table <<- x
+    final_scores_table <<- x %>%
+      dplyr::mutate(., Evaluator_fk = users$Id[match(stringr::str_replace(user_name, "_", " "), users$Name)],
+                                        evalProp_Id = as.numeric(stringr::str_c(Evaluator_fk, Proposal_fk))) %>%
+      dplyr::mutate(read_score_id = df_read$Id[match(evalProp_Id, df_read$evalProp_fk)],
+             interview_score_id = df_interview$Id[match(evalProp_Id, df_interview$evalProp_fk)],
+             timestamp_export_generated = Sys.time())
 
-    x <- x %>%
+    r1395_props <<- x %>%
+      dplyr::filter(., rfp_type == '3K/PK (1395)') %>%
       dplyr::group_split(., user_proposal)
 
-    return(x)
+    r1396_props <<- x %>%
+      dplyr::filter(., rfp_type == 'COL (1396)') %>%
+      dplyr::group_split(., user_proposal)
 
   }
 }

@@ -32,5 +32,7 @@ get_rfp_datasets = function() {
     proposal_info <<- googlesheets4::read_sheet(ss_ems_tool, sheet = "Proposal_Info")
 
     coversheet <<- read_sheet(ss_ems_tool, sheet = "CoverSheet")
+
+    final_score_entry <<- read_sheet(ss_ems_tool, sheet = 'final_score_entry')
   }
 }
