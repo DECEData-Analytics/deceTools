@@ -1,3 +1,12 @@
+#' TPrep scores for score export
+#'
+#' @param df_read
+#' @param df_interview
+#'
+#' @return
+#' @export
+#'
+#' @examples
 prep_scores_test = function(df_read, df_interview) {
   if (exists('strength_comments') & exists('growth_comments') & exists('users') & exists('proposal_info')) {
 

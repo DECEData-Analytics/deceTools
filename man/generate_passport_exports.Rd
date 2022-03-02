@@ -4,12 +4,17 @@
 \alias{generate_passport_exports}
 \title{Generates excel file outputs for upload into passport for the 3kpk 1395 rfp}
 \usage{
-generate_passport_exports(df, template, file_path_to_save)
+generate_passport_exports(
+  df,
+  excel_template_3kpk = NULL,
+  excel_template_COL = NULL,
+  file_path_to_save
+)
 }
 \arguments{
 \item{df}{which dataset/readscores to use}
 
-\item{template}{which excel template/export from passport to use}
+\item{excel_template_COL}{}
 
 \item{file_path_to_save}{where do you want the files saved. Character file path}
 }
