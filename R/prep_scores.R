@@ -1,13 +1,13 @@
-#' TPrep scores for score export
+#' Prep scores for score export
 #'
 #' @param df_read
 #' @param df_interview
 #'
-#' @return
+#' @return 3 lists of the scores to export over
 #' @export
 #'
 #' @examples
-prep_scores_test = function(df_read, df_interview) {
+prep_scores = function(df_read, df_interview) {
   if (exists('strength_comments') & exists('growth_comments') & exists('users') & exists('proposal_info')) {
 
     x <- dplyr::left_join(df_read, df_interview, by = c("Id" = "rs_fk"), na_matches = "never") %>%
