@@ -2,6 +2,8 @@
 
 export("%>%")
 export("%notin%")
+export(final_3kpk_score)
+export(final_col_score)
 export(gen_multiple_charters)
 export(gen_multiple_scores)
 export(generate_charter_export)
