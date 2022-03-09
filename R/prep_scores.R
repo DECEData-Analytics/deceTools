@@ -37,8 +37,10 @@ prep_scores = function(df_read, df_interview) {
                     ResponsiveInstruction_7:CargiversTeachersAdvocates_9, final_10a, final_10b,
                     QualifiedLeadership_11, 	OrgCultureCommunity_12, comment) %>%
       dplyr::mutate(final_score_prop = if_else(rfp_type == "3K/PK (1395)",
-                                               round(rowSums(dplyr::select(., final_pgm_vision,EquityAndAccess_2:OrgCultureCommunity_12), na.rm = TRUE) / 75 * 5, digits = 2),
-                                               round(rowSums(dplyr::select(., final_col_1a:OrgCultureCommunity_12), na.rm = TRUE) / 85 * 5, digits = 2)))
+                                               deceTools::final_3kpk_score(.),
+                                               deceTools::final_col_score(.)))
+                                               # round(rowSums(dplyr::select(., final_pgm_vision,EquityAndAccess_2:OrgCultureCommunity_12), na.rm = TRUE) / 75 * 5, digits = 2),
+                                               # round(rowSums(dplyr::select(., final_col_1a:OrgCultureCommunity_12), na.rm = TRUE) / 85 * 5, digits = 2)))
 
 
     final_scores_table <<- x %>%
